@@ -1,0 +1,77 @@
+class Aluno(): #CLASSE
+    
+    # CONSTRUTOR ======================================
+    def __init__(self):
+        self.p1 = None
+        self.Ma1 = None
+        self.Mb1 = None
+        self.p2 = None
+        self.Ma2 = None
+        self.Mb2 = None
+        self.qtdAulas = None
+        self.qtdFaltas = None
+        self.mf = None
+        self.freq = None
+        
+            
+    # FUNÇÃO ENTRADA DE DADOS ==========================
+    def entradaDados(self):
+        self.p1 = float(input("Nota P1: "))
+        self.Ma1 = float(input("Nota Ma1: "))
+        self.Mb1 = float(input("Nota Mb1: "))
+        self.p2 = float(input("Nota P2: "))
+        self.Ma2 = float(input("Nota Ma2: "))
+        self.Mb2= float(input("Nota Mb2: "))
+        self.qtdAulas = int(input("Total de Aulas: "))
+        self.qtdFaltas = int(input("Total de Faltas: "))
+    
+
+    # FUNÇÃO CALCULA MEDIA ==============================
+    def mediaFinal(self):
+        a1 = (0.7*self.p1) + (0.2*self.Ma1) + (0.1*self.Mb1)
+        a2 = (0.7*self.p2) + (0.2*self.Ma2) + (0.1*self.Mb2)
+        
+        self.mf = ((a1 + 2 * a2) / 3)
+        
+
+   
+    #FUNÇÃO CALCULA FREQUENCIA ===========================
+    def calculaFrequencia (self):
+        self.freq = ((self.qtdFaltas / self.qtdAulas) * 100)
+        
+
+    # FUNÇÃO ENTRADA DE DADOS ==========================
+    def saidaDados(self):
+
+        print ("\nMédia Final do Aluno: {:.2f}\n".format(self.mf))
+        
+        if (self.mf <= 3.0 and self.freq > 25):
+            print("Situação: REPROVADO POR NOTA E FALTA\n")           
+        elif (self.freq > 25):
+            print("Situação: REPROVADO POR FALTA\n")
+        elif (self.mf <= 3.0 and self.freq < 25):
+            print("Situação: REPROVADO POR NOTA\n")
+        elif (self.mf < 5.0 and self.mf > 3.0 and self.freq < 25):
+            print("Situação: RECUPERAÇÃO\n")
+        else:
+            print("Situação: APROVADO\n")
+            
+        #print ("%faltas: {}".format(self.freq))
+        
+#======================================================================================
+# PRINCIPAL
+
+# Para o Arquivo Aluno importe a Classe Aluno
+from Aluno import Aluno
+
+a = Aluno() #Objeto
+
+#Chamando Funções
+
+a.entradaDados()
+
+a.mediaFinal ()
+
+a.calculaFrequencia ()
+
+a.saidaDados()
